@@ -136,7 +136,8 @@ PROJECT_FIGURES = [
     ("网络结构与物理闭环", "network_structure.png", "三通道地震特征、稀疏井低频先验、固定 Ricker 正演闭环。"),
     ("稀疏井低频先验", "lowfreq_prior.png", "利用约 0.8% 稀疏井道构建低频背景，辅助宏观趋势恢复。"),
     ("测试区域反演结果", "inversion_result.png", "参考阻抗、预测阻抗与低频先验同色标对比。"),
-    ("误差与指标统计", "error_metrics.png", "测试区域 R2=0.9731、RMSE=0.0783、MAE=0.0533、Bias=-0.0082。"),
+    ("残差与绝对误差剖面", "residual_error.png", "从空间分布角度观察预测误差，辅助判断地质结构连续性。"),
+    ("指标统计与模型选择", "metric_statistics.png", "测试区域 R2=0.9731、RMSE=0.0783、MAE=0.0533、Bias=-0.0082。"),
 ]
 
 
