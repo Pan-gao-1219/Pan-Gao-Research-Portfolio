@@ -22,7 +22,7 @@ KEY_POINTS = [
     ("申请意向", "硕士研究生", "希望跟随陆文凯老师从事人工智能与地球物理反演方向科研"),
     ("方向契合", "CycleGAN + 地球物理反演", "已在相关研究基础上完成复现，并开展结构与约束改进"),
     ("入组承诺", "暑假起提前进组", "若获认可，将不再参加其他院校夏令营考核，愿全程留京跟进科研"),
-    ("可贡献能力", "专业 + 代码 + 软件封装", "GeoEast/Jason、Qt/Streamlit、实验自动化与成果材料整理"),
+    ("综合支撑", "连续两年国家奖学金", "专业基础、竞赛荣誉、工程封装与科研项目共同支撑申请"),
 ]
 
 
@@ -61,6 +61,46 @@ CAPABILITIES = [
     ("复现体系", "自建“AI + 文献论文 + GitHub 源码”的闭环学习复现体系，能快速研读、部署和迭代实验。"),
     ("成果固化", "熟悉软件著作权材料整理与申报流程，可协助横向项目结题和科研成果转化。"),
     ("表达支持", "具备 PPT 制作、项目汇报答辩和摄影记录能力，可支持组内汇报与活动材料制作。"),
+]
+
+
+APPLICATION_AWARD_SUMMARY = [
+    {
+        "group": "学业与综合荣誉",
+        "items": [
+            "2024 年国家奖学金",
+            "2025 年国家奖学金",
+            "2024、2025 年中国海洋大学学习优秀一等奖学金",
+            "2024、2025 年中国海洋大学“优秀学生”荣誉称号",
+            "2024、2025 年中国海洋大学“优秀学生干部”荣誉称号",
+        ],
+    },
+    {
+        "group": "学科竞赛与创新创业",
+        "items": [
+            "2024 年中国海洋大学大学生地质技能及地学知识竞赛二等奖",
+            "2024 年第三届全国大学生数据分析科普竞赛一等奖",
+            "2026 年“挑战杯”中国大学生创业计划竞赛校级金奖，并已推省",
+            "2025 年海洋地球科学学院青春榜样人物创新创业榜样",
+        ],
+    },
+    {
+        "group": "社会实践与志愿服务",
+        "items": [
+            "2024 年山东省“三下乡”社会实践优秀学生",
+            "2024 年中国海洋大学优秀实践个人",
+            "2025 年枣庄市大学生暑期社会实践优秀调研报告三等奖",
+            "2026 年中国海洋大学“杰出志愿者”“优秀青年志愿者”“优秀共青团干部”等荣誉",
+        ],
+    },
+    {
+        "group": "科研经历及成果",
+        "items": [
+            "2025 年 8 月立项山东省大学生创新创业训练计划项目",
+            "项目名称：基于 CycleGAN 与物理约束的地震反演方法研究",
+            "目前围绕该方向形成网络结构、初步实验结果与工程封装系统",
+        ],
+    },
 ]
 
 
@@ -423,6 +463,32 @@ def render_research_images() -> None:
             image_or_notice(RESEARCH_DIR / filename, caption)
 
 
+def render_application_award_summary() -> None:
+    section_title("申请表中的奖项与成果摘要", "申请表包含完整个人信息，不适合公开展示原图；这里仅整理其中与申请相关的奖项、经历和科研成果。")
+    cols = st.columns(4)
+    for col, block in zip(cols, APPLICATION_AWARD_SUMMARY):
+        items = "".join(f"<li>{item}</li>" for item in block["items"])
+        with col:
+            st.markdown(
+                f"""
+                <div class="support-card">
+                  <h3>{block["group"]}</h3>
+                  <ul>{items}</ul>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+    st.markdown(
+        """
+        <div class="note">
+        说明：申请表原件中含身份证号、联系电话、邮箱、住址、照片等敏感信息，因此公开网页不展示原图。
+        如老师需要核验，可在正式申请材料附件中查看原表及证书扫描件。
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def render_awards() -> None:
     section_title("奖项与荣誉证明", "作为侧翼材料展示综合素质，页面默认精简，可按需筛选。")
     categories = ["全部"] + sorted({item[1] for item in AWARDS})
@@ -474,6 +540,7 @@ def main() -> None:
     render_project_figures()
     render_qt_workflow()
     render_research_images()
+    render_application_award_summary()
     render_awards()
     render_footer()
 
