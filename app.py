@@ -729,20 +729,15 @@ def render_scores() -> None:
         st.markdown("#### 学习成绩排名证明")
         img(SCORES_DIR / "ranking.jpg")
 
-    sec("英语四六级成绩",
-        "CET-4 552 分 · CET-6 522 分，附官方成绩单及学校出具的四六级成绩证明。")
+    sec("英语四六级成绩", "CET-4 552 分 · CET-6 522 分")
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2 = st.columns(2)
     with col1:
         st.markdown("#### CET-4　**552 分**")
         img(SCORES_DIR / "CET4.jpg")
     with col2:
         st.markdown("#### CET-6　**522 分**")
         img(SCORES_DIR / "CET6.jpg")
-    with col3:
-        st.markdown("#### 学校四六级成绩证明")
-        img(SCORES_DIR / "english_cert_p1.jpg", "第 1 页")
-        img(SCORES_DIR / "english_cert_p2.jpg", "第 2 页")
 
 
 # ══════════════════════════════════════════════════════════════
