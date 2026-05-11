@@ -1,5 +1,7 @@
 # 潘高 · 研究型申请作品集
 
+Self-introduction-for-Professor-Lu
+
 这是一个用于 GitHub + Streamlit 部署的个人申请展示网站，内容根据申请信、个人陈述、奖项证明、科研项目与专利受理材料整理。
 
 ## 本地运行
