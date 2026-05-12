@@ -634,14 +634,9 @@ def render_research() -> None:
         img(qr_path)
 
     sec("创新项目证明")
-    proj_items = [
-        (RESEARCH_DIR / "图片2.png",            "省级大创项目立项证明"),
-        (RESEARCH_DIR / "innovation_project.png","创新创业项目材料"),
-    ]
-    cols = st.columns(2)
-    for col, (path, caption) in zip(cols, proj_items):
-        with col:
-            img(path, caption)
+    _, mid, _ = st.columns([1, 2, 1])
+    with mid:
+        img(RESEARCH_DIR / "innovation_project.png", "省级大创项目立项证明")
 
 
 # ══════════════════════════════════════════════════════════════
