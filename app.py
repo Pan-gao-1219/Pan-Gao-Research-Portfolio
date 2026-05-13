@@ -742,7 +742,8 @@ def render_honors() -> None:
                         unsafe_allow_html=True,
                     )
                     st.markdown(f"**{title}**")
-                    img(AWARD_DIR / fname)
+                    if fname:
+                        img(AWARD_DIR / fname)
 
 
 # ══════════════════════════════════════════════════════════════
