@@ -396,12 +396,44 @@ div[data-testid="stImage"] img {
   margin-bottom: 1rem;
 }
 
+/* ── 页面导航 Tab 栏 ── */
+.page-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  margin-bottom: 1.8rem;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.08);
+}
+.page-nav a {
+  flex: 1;
+  padding: 1.1rem .5rem;
+  text-align: center;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none !important;
+  border-right: 1px solid var(--border);
+  transition: background .15s, color .15s;
+  letter-spacing: .01em;
+}
+.page-nav a:last-child { border-right: none; }
+.page-nav a:hover {
+  background: var(--teal-lt);
+  color: var(--teal);
+}
+
 /* 响应式 */
 @media (max-width: 760px) {
   .stat-row     { grid-template-columns: repeat(2, 1fr); }
   .cap-grid     { grid-template-columns: 1fr; }
   .research-grid{ grid-template-columns: 1fr; }
   .letter-wrap  { padding: 1.2rem 1rem; }
+  .page-nav a   { font-size: .88rem; padding: .9rem .3rem; }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -743,8 +775,20 @@ def render_scores() -> None:
 #  主函数
 # ══════════════════════════════════════════════════════════════
 
-def _page_banner(icon: str, title: str) -> None:
+def render_nav() -> None:
+    st.markdown("""
+<div class="page-nav">
+  <a href="#sec-letter">📄 申请信</a>
+  <a href="#sec-research">🔬 科研成果</a>
+  <a href="#sec-honors">🏆 荣誉证明</a>
+  <a href="#sec-scores">📊 成绩材料</a>
+</div>
+""", unsafe_allow_html=True)
+
+
+def _page_banner(icon: str, title: str, anchor: str) -> None:
     st.markdown(
+        f'<div id="{anchor}" style="scroll-margin-top:80px;"></div>'
         f'<div style="background:var(--teal);border-radius:12px;padding:1rem 1.8rem;'
         f'margin:3rem 0 1.6rem;display:flex;align-items:center;gap:.9rem;">'
         f'<span style="font-size:1.5rem;">{icon}</span>'
@@ -763,18 +807,19 @@ def main() -> None:
     )
     inject_css()
     render_hero()
+    render_nav()
 
-    _page_banner("📄", "申请信")
+    _page_banner("📄", "申请信", "sec-letter")
     render_letter()
     render_network_preview()
 
-    _page_banner("🔬", "科研成果")
+    _page_banner("🔬", "科研成果", "sec-research")
     render_research()
 
-    _page_banner("🏆", "荣誉证明")
+    _page_banner("🏆", "荣誉证明", "sec-honors")
     render_honors()
 
-    _page_banner("📊", "成绩材料")
+    _page_banner("📊", "成绩材料", "sec-scores")
     render_scores()
 
 
