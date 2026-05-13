@@ -522,7 +522,7 @@ def render_hero() -> None:
       <div class="hero-eyebrow">中国海洋大学 · 勘查技术与工程</div>
       <div class="hero-name">潘高</div>
       <div class="hero-sub">
-        诚挚申请攻读 <b>陆文凯老师</b> 的硕士研究生，希望跟随您从事
+        诚挚申请攻读 <b>陆文凯老师</b> 的硕士（博士）研究生，希望跟随您从事
         <b>人工智能与地球物理反演</b>方向的科研工作。
       </div>
       <div class="hero-commit">
