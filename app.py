@@ -557,7 +557,7 @@ def render_letter() -> None:
 </ul>
 <div class="callout-teal" style="margin-top:.8rem;">
   📞 <b>18306376923</b>　　📧 <b>1534827320@qq.com</b><br>
-  对我有任何感兴趣的地方，我都愿意亲自线下与您面谈。
+  对我有任何感兴趣的地方，如果您有时间，我都随时可以线下与您面谈。
 </div>
 
 <h3>八、结语</h3>
