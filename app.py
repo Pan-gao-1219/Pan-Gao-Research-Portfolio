@@ -535,7 +535,7 @@ def render_letter() -> None:
 <p>我已形成较成熟的科研工作模式：熟练使用 <b>Streamlit、Qt</b> 搭建标准化工作流，可对算法与模型进行网页端、客户端封装；自建"人工智能 + 文献论文 + GitHub 源码"闭环学习复现体系，能够快速精读文献、复现代码、迭代实验方案；借助 AI 工具自主编写脚本，实现参数寻优、批量实验等流程自动化。熟悉<b>软件著作权</b>全流程申报，可随时协助课题组完成软著申请、材料整理与提交。</p>
 
 <h3>六、核心科研方向</h3>
-<p>自<b>大二下学期</b>起接触科研，便深度投入其中，牵头省级大学生创新创业训练计划项目《基于 CycleGAN 与物理约束的地震反演方法研究》，目前已有<b>一篇研究论文在投</b>。所有实验在个人独立开展、<b>仅配备一张 RTX 5060 Ti 显卡</b>的条件下完成，算力有限，但仍取得了较为完整的成果。</p>
+<p>自<b>大二下学期</b>起接触科研，便深度投入其中，牵头省级大学生创新创业训练计划项目《基于 CycleGAN 与物理约束的地震反演方法研究》，目前已有<b>一篇研究论文在投</b>。所有实验在个人独立开展、<b>配备一张 RTX 5060 Ti 显卡</b>的条件下完成，算力有限，但仍取得了较为完整的成果。</p>
 <p>在复现经典双生成器、双判别器架构的基础上，我做出核心创新：</p>
 <ul>
   <li>将其中一个生成器替换为<b>确定性地球物理正演模型</b>，把物理正演先验作为强约束直接嵌入网络结构；</li>
@@ -557,25 +557,11 @@ def render_letter() -> None:
 """, unsafe_allow_html=True)
 
 
-def render_capabilities() -> None:
-    sec("六大支撑能力")
-    caps = [
-        ("📐", "专业基础",     "地震勘探相关课程均分 92.3 分，专业成绩与综合测评均位列班级第二，专业知识体系扎实完备。"),
-        ("🖥", "专业软件",     "担任地源地震资料处理实验室助理，熟悉 GeoEast、Jason 等主流处理与反演软件，入组即可上手。"),
-        ("⚙️", "工程封装",    "熟练使用 Streamlit、Qt 搭建标准化工作流，能把算法封装为可复用的网页端或客户端工具。"),
-        ("🔁", "复现能力",     "自建「AI + 文献 + GitHub」闭环学习体系，能快速精读文献、复现代码、迭代实验。"),
-        ("📋", "成果固化",     "熟悉软件著作权全流程申报，可随时协助课题组完成软著申请、材料整理与横向项目结题。"),
-        ("🎤", "PPT 与记录",   "PPT 达商业级别，曾服务学院年度汇报、横向项目路演及创赛答辩；摄影作品曾刊发于人民日报、中国青年报等主流平台。"),
-    ]
-    html = "".join(
-        f'<div class="cap-card">'
-        f'<div class="cap-icon">{icon}</div>'
-        f'<div class="cap-title">{title}</div>'
-        f'<div class="cap-body">{body}</div>'
-        f'</div>'
-        for icon, title, body in caps
-    )
-    st.markdown(f'<div class="cap-grid">{html}</div>', unsafe_allow_html=True)
+def render_network_preview() -> None:
+    sec("核心网络结构图", "三通道地震输入 · 物理正演闭环 · 稀疏井低频先验")
+    title, fname, desc = PROJECT_FIGURES[0]
+    st.caption(desc)
+    img(PROJECT_DIR / fname)
 
 
 # ══════════════════════════════════════════════════════════════
@@ -745,6 +731,17 @@ def render_scores() -> None:
 #  主函数
 # ══════════════════════════════════════════════════════════════
 
+def _page_banner(icon: str, title: str) -> None:
+    st.markdown(
+        f'<div style="background:var(--teal);border-radius:12px;padding:1rem 1.8rem;'
+        f'margin:3rem 0 1.6rem;display:flex;align-items:center;gap:.9rem;">'
+        f'<span style="font-size:1.5rem;">{icon}</span>'
+        f'<span style="font-size:1.35rem;font-weight:900;color:#fff;">{title}</span>'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def main() -> None:
     st.set_page_config(
         page_title="潘高 · 致陆文凯老师的硕士申请",
@@ -755,20 +752,18 @@ def main() -> None:
     inject_css()
     render_hero()
 
-    tab1, tab2, tab3, tab4 = st.tabs(["📄 申请信", "🔬 科研成果", "🏆 荣誉证明", "📊 成绩材料"])
+    _page_banner("📄", "申请信")
+    render_letter()
+    render_network_preview()
 
-    with tab1:
-        render_letter()
-        render_capabilities()
+    _page_banner("🔬", "科研成果")
+    render_research()
 
-    with tab2:
-        render_research()
+    _page_banner("🏆", "荣誉证明")
+    render_honors()
 
-    with tab3:
-        render_honors()
-
-    with tab4:
-        render_scores()
+    _page_banner("📊", "成绩材料")
+    render_scores()
 
 
 
