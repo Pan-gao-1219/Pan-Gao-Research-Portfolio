@@ -1,8 +1,6 @@
-# 潘高 · 研究型申请作品集
+# 潘高 · AI4Science 个人科研作品集
 
-Self-introduction-for-Professor-Lu
-
-这是一个用于 GitHub + Streamlit 部署的个人申请展示网站，内容根据申请信、个人陈述、奖项证明、科研项目与专利受理材料整理。
+这是一个使用 GitHub 与 Streamlit 部署的个人科研展示网站，集中呈现 AI4Science 研究兴趣、智能地球物理项目、Skills-Agent 科研智能体规划、工程实践、荣誉与成绩材料。
 
 ## 本地运行
 
